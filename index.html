@@ -3,66 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - PNM</title>
+    <title>Hover to Play Video</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Hide scrollbars */
-            display: flex;
-            align-items: flex-start; /* Align items to the top */
-            justify-content: flex-start; /* Align items to the left */
-            height: 100vh;
-            background-color: #000; /* Set background color to black */
-        }
-        .container {
-            position: relative;
-            width: 30%; /* Set the width of the image container */
-            height: 40%; /* Set a fixed height for the image window */
             overflow: hidden;
-            clip-path: circle(35% at 53% 52%); /* Clip the image to the circle shape */
-            transition: transform 0.5s ease; /* Smooth zoom effect */
-            margin-right: 3%; /* Space between the container and the text container */
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #000;
+        }
+        .media-container {
+            position: absolute;
             top: 5%;
+            left: 5%;
+            width: 30%;
+            height: 40%;
+            clip-path: circle(33% at 50% 50%);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
-        .container:hover {
-            transform: scale(1.1); /* Zoom in */
-        }
-        .image-row {
+        .media-container img,
+        .media-container video {
+            position: absolute;
             width: 100%;
             height: 100%;
-            background-size: cover; /* Adjust to fit within the container */
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            clip-path: circle(33% at 50% 50%);
+            transition: opacity 0.5s ease;
+            object-fit: cover;
         }
-        .image-row {
-            background-image: url('images/img.jpg'); /* Use your single image here */
+        .media-container img {
+            z-index: 1;
+        }
+        .media-container video {
+            opacity: 0;
+            z-index: 2;
+            object-fit: cover;
+        }
+        .media-container.hover-active video {
+            opacity: 1;
+        }
+        .media-container.hover-active img {
+            opacity: 0;
         }
         .box {
-            width: 30%; /* Set the width of the text container */
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            width: 40%;
             padding: 20px;
-            color: #fff; /* White text color */
-            font-family: 'Georgia', serif; /* Aesthetic font for the paragraph */
-            line-height: 1.6; /* Increase line height for readability */
+            color: #fff;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
             border: 1px solid #ffffff;
-            transition: transform 0.5s ease; /* Smooth zoom effect */
-            margin-top: 5%;
-            margin-left: 40%;
-        }
-        .box:hover {
-            transform: scale(1.1); /* Zoom in */
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="image-row"></div>
+    <div class="media-container" id="media-container">
+        <img src="images/img.jpg" alt="Image" id="image">
+        <video id="video" src="videos/glitch.mp4" preload="auto" loop></video>
+        <audio id="audio" src="audios/glitch.mp3" preload="auto" loop></audio>
     </div>
+   
     <div class="box">
         <h1>Pavankumar N M</h1>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor, orci ut ullamcorper consectetur, nisi felis malesuada arcu, eu interdum metus nulla vel erat. Duis vehicula ligula nec lectus efficitur, vel aliquet lacus scelerisque. Sed tincidunt, odio ac auctor vehicula, ante sem feugiat arcu, sit amet iaculis urna eros vel mi.
+            <h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor, orci ut ullamcorper consectetur, nisi felis malesuada arcu, eu interdum metus nulla vel erat. Duis vehicula ligula nec lectus efficitur, vel aliquet lacus scelerisque. Sed tincidunt, odio ac auctor vehicula, ante sem feugiat arcu, sit amet iaculis urna eros vel mi.</h4>
         </p>
     </div>
+
+    <script>
+        const mediaContainer = document.getElementById('media-container');
+        const video = document.getElementById('video');
+        const audio = document.getElementById('audio');
+
+        mediaContainer.addEventListener('mouseenter', () => {
+            mediaContainer.classList.add('hover-active');
+            video.play().catch(error => console.error('Error playing video:', error));
+            audio.play().catch(error => console.error('Error playing audio:', error));
+            audio.volume = 1.0; // Ensure audio volume is set to maximum
+        });
+
+        mediaContainer.addEventListener('mouseleave', () => {
+            mediaContainer.classList.remove('hover-active');
+            video.pause();
+            video.currentTime = 0;
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    </script>
 </body>
 </html>
