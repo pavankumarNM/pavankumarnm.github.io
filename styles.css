@@ -13,13 +13,12 @@ body {
   position: absolute;
   top: 5%;
   left: 5%;
-  width: 30%;
-  height: 40%;
-  clip-path: circle(33% at 50% 50%);
+  width: 33vw;
+  height: 33vw;
+  clip-path: circle(27% at 50% 50%);
   overflow: hidden;
   transition: transform 0.3s ease;
   cursor: pointer;
-  position: relative;
 }
 
 .media-container img,
@@ -27,12 +26,9 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  clip-path: circle(33% at 50% 50%);
-  transition: opacity 0.5s ease;
   object-fit: cover;
+  clip-path: circle(27% at 50% 50%);
+  transition: opacity 0.5s ease;
 }
 
 .media-container img {
@@ -42,7 +38,6 @@ body {
 .media-container video {
   opacity: 0;
   z-index: 2;
-  object-fit: cover;
 }
 
 .media-container.hover-active video {
@@ -56,48 +51,89 @@ body {
 .box {
   position: absolute;
   top: 5%;
-  left: 50%;
-  max-width: fit-content;
-  width: 40%;
-  padding: 20px;
+  left: calc(30vw + 5%);
+  width: 30vw;
+  padding: 1vw;
   color: #fff;
   font-family: "Georgia", serif;
   line-height: 1.6;
   border: 1px solid #ffffff;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 90vw;
 }
 
 .code-container {
   position: absolute;
   top: 45%;
-  left: 50%;
-  width: 770px;
-  height: 350px;
-  padding: 20px;
+  left: 51vw;
+  width: 31vw;
+  height: 15vw;
+  padding: 1px;
   color: #fff;
   font-family: "Georgia", serif;
   line-height: 1.6;
-  border: 1px solid #ffffff;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
 }
 
 #code-block {
-  width: 95%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   background-color: #222;
   color: #fff;
   border: none;
   padding: 10px;
   resize: none;
-  font-size: 13px;
+  font-size: 1em;
 }
 
 button {
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    color: #fef9f9;
-    background-color: #030303;
+  padding: 5px 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #fef9f9;
+  background-color: #030303;
+}
+
+@media (max-width: 768px) {
+  .media-container {
+    top: 1%;
+    left: 50%;
+    width: 50vw;
+    height: 50vw;
+    clip-path: circle(27% at 50% 50%);
+    transform: translateX(-50%);
+  }
+
+  .box {
+    top: 20%;
+    left: 50%;
+    width: 80vw;
+    padding: 4vw;
+    transform: translateX(-50%);
+    max-width: none;
+  }
+
+  .code-container {
+    top: calc(50% + 50vw);
+    left: 50%;
+    width: 80vw;
+    height: 50vw;
+    padding: 4vw;
+    transform: translate(-50%, 0);
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  padding: 5px;
+  background-color: #abbaba;
+  color: #000;
+  width: auto;
+  margin: 0;
 }

@@ -18,13 +18,14 @@ mediaContainer.addEventListener("mouseleave", () => {
 });
 
 function copyText() {
-    const textArea = document.getElementById('code-block');
-    const copyButton = document.getElementById('copyButton');
-    navigator.clipboard.writeText(textArea.value)
-        .then(() => {
-            alert('Details copied to clipboard!\n\nIf you are hr consider mailing');
-        })
-        .catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
+  const textArea = document.getElementById("code-block");
+  const copyButton = document.getElementById("copyButton");
+  navigator.clipboard
+    .writeText(textArea.value)
+    .then(() => {
+      alert("Details copied to clipboard!\n\nIf you are hr consider mailing");
+    })
+    .catch((err) => {
+      console.error("Failed to copy text: ", err);
+    });
 }
