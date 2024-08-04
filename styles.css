@@ -12,7 +12,7 @@ body {
 .media-container {
   position: absolute;
   top: 5%;
-  left: 5%;
+  left: 2vw;
   width: 33vw;
   height: 33vw;
   clip-path: circle(27% at 50% 50%);
@@ -131,9 +131,110 @@ footer {
   bottom: 0;
   right: 0;
   text-align: center;
-  padding: 5px;
+  padding: 1px;
   background-color: #abbaba;
   color: #000;
   width: auto;
   margin: 0;
+}
+
+.link-container {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 40%;
+  margin-top: 25vw;
+  margin-left: 1vw;
+}
+
+.link-container img {
+  display: block;
+  max-width: 30%;
+  transition: transform 0.3s ease;
+  clip-path: circle(39% at 50% 50%);
+}
+
+.link-container a {
+  width: 30%;
+  display: inline-block;
+  margin-top: 5vw;
+  margin-left: 1vw;
+}
+
+.link-container img:hover {
+  transform: scale(1.25);
+}
+
+@media (max-width: 767px) {
+  body,
+  html {
+    height: auto;
+    display: block;
+  }
+
+  .link-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .link-container img {
+    width: 100%;
+  }
+}
+
+.nav-btn {
+  font-size: 30px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  z-index: 1000;
+}
+
+.side-nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.side-nav a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(119, 140, 233);
+  display: block;
+  transition: 0.1s;
+  text-align: center;
+}
+
+.side-nav a:hover {
+  background-color: #575757;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .side-nav.open {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .side-nav.open {
+    width: 30%;
+  }
 }

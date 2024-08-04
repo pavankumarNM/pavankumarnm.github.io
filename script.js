@@ -29,3 +29,16 @@ function copyText() {
       console.error("Failed to copy text: ", err);
     });
 }
+
+function toggleNav() {
+  const sideNav = document.getElementById("sideNav");
+  if (sideNav.classList.contains("open")) {
+    sideNav.classList.remove("open");
+  } else {
+    sideNav.classList.add("open");
+  }
+}
+
+function closeNav() {
+  document.getElementById("sideNav").style.width = "0";
+}
